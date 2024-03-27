@@ -4,6 +4,12 @@
   - Header
   - Login-Form
   - Sign-Up Form
+  - Form Validation
+  - Use Ref Hook 
+  - Firebase Setup 
+  - Deployement of app to production 
+  - Create SignUp Account User using Firebase
+  
 # Features 
 - Login/Signup
   - signin/SignUp form 
