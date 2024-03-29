@@ -3,45 +3,57 @@ import Header from './Header'
 import { checkValidateData } from '../utils/validate'
 import {  createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../utils/firebase';
+import { useNavigate } from 'react-router-dom';
+import { updateProfile } from "firebase/auth";
 const Login = () => {
-    const [isSignInForm,setIsSignInForm]=useState(true)
-    const [errorMessage,setErrorMessage]=useState(null)
-    const toggleSignIn=()=>{
+    const [isSignInForm, setIsSignInForm] = useState(true)
+    const [errorMessage, setErrorMessage] = useState(null)
+    const toggleSignIn = () => {
         setIsSignInForm(!isSignInForm);
     }
-    const email=useRef(null);
-    const password=useRef(null);
-    const handleClickEvent=()=>{
-        const message=checkValidateData(email.current.value,password.current.value);
+    const navigate = useNavigate()
+    const name = useRef(null)
+    const email = useRef(null);
+    const password = useRef(null);
+    const handleClickEvent = () => {
+        const message = checkValidateData(email.current.value, password.current.value);
         setErrorMessage(message);
-        if(message) return;
+        if (message) return;
         //Signup SignIn Logic
-        if(!isSignInForm){
+        if (!isSignInForm) {
             //Sign Up logic
-            createUserWithEmailAndPassword(auth, email.current.value,password.current.value)
+
+            createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
                 .then((userCredential) => {
                     // Signed up
                     const user = userCredential.user;
-                    console.log(user);// login user object on successfull signup
+                    updateProfile(user, {
+                        displayName: name.current.value
+                    }).then(() => {
+                        // Profile updated!
+                        navigate('/browse')
+                    }).catch((error) => {
+                        setErrorMessage(error.message)
+                    });
                 })
                 .catch((error) => {
                     const errorCode = error.code;
                     const errorMessage = error.message;
-                    setErrorMessage(errorCode+'-'+errorMessage);
+                    setErrorMessage(errorCode + '-' + errorMessage);
                 });
         }
-        else{
-            signInWithEmailAndPassword(auth, email.current.value,password.current.value)
+        else {
+            signInWithEmailAndPassword(auth, email.current.value, password.current.value)
                 .then((userCredential) => {
                     // Signed in 
                     const user = userCredential.user;
-                    console.log(user)
-                    // ...
+                    navigate('/browse')
+
                 })
                 .catch((error) => {
                     const errorCode = error.code;
                     const errorMessage = error.message;
-                    setErrorMessage(errorCode+'-'+errorMessage);
+                    setErrorMessage(errorCode + '-' + errorMessage);
                 });
         }
     }
@@ -54,7 +66,7 @@ return (
     <form onSubmit={(e)=>e.preventDefault()} className='absolute bg-black w-3/12 p-12 my-36 mx-auto right-0 left-0 text-white opacity-80 '>
         <h1 className='font-bold text-3xl py-4 '>{isSignInForm?"Sign In":"Sign Up"}</h1>
     {!isSignInForm && 
-        <input type='text' placeholder='Full Name' className='p-2 my-2 w-full bg-gray-700'/>
+        <input ref={name} type='text' placeholder='Full Name' className='p-2 my-2 w-full bg-gray-700'/>
     }
     <input ref={email} type="text" placeholder='Email Address' className='p-2 my-2 w-full bg-gray-700'/> 
     <input ref={password} type="password" placeholder='Password' className='p-2 my-2 w-full bg-gray-700'/>

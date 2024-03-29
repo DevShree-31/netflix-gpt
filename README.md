@@ -9,7 +9,10 @@
   - Firebase Setup 
   - Deployement of app to production 
   - Create SignUp Account User using Firebase
-  
+  - Created Sign In account
+  - created redux store for the app
+  - Update Profile 
+  -
 # Features 
 - Login/Signup
   - signin/SignUp form 
