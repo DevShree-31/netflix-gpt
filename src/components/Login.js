@@ -5,6 +5,7 @@ import {  createUserWithEmailAndPassword,signInWithEmailAndPassword } from "fire
 import { auth } from '../utils/firebase';
 import { useNavigate } from 'react-router-dom';
 import { updateProfile } from "firebase/auth";
+import { BACK_IMG_URL, LOGO_URL } from '../utils/constants';
 const Login = () => {
     const [isSignInForm, setIsSignInForm] = useState(true)
     const [errorMessage, setErrorMessage] = useState(null)
@@ -31,7 +32,6 @@ const Login = () => {
                         displayName: name.current.value
                     }).then(() => {
                         // Profile updated!
-                        navigate('/browse')
                     }).catch((error) => {
                         setErrorMessage(error.message)
                     });
@@ -47,8 +47,6 @@ const Login = () => {
                 .then((userCredential) => {
                     // Signed in 
                     const user = userCredential.user;
-                    navigate('/browse')
-
                 })
                 .catch((error) => {
                     const errorCode = error.code;
@@ -61,7 +59,7 @@ return (
     <div>
     <Header/>
     <div className='absolute'>
-    <img src='https://user-images.githubusercontent.com/33485020/108069438-5ee79d80-7089-11eb-8264-08fdda7e0d11.jpg' alt='bgImage'/>
+    <img src={BACK_IMG_URL}/>
     </div>
     <form onSubmit={(e)=>e.preventDefault()} className='absolute bg-black w-3/12 p-12 my-36 mx-auto right-0 left-0 text-white opacity-80 '>
         <h1 className='font-bold text-3xl py-4 '>{isSignInForm?"Sign In":"Sign Up"}</h1>

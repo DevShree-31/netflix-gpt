@@ -12,7 +12,10 @@
   - Created Sign In account
   - created redux store for the app
   - Update Profile 
-  -
+  - if user is logged in we will make it logged in
+  - Made a constants files
+  - Registered TMDB API & Created an API access token 
+  - Get Data from TMDB API by making a call for now Playing movies 
 # Features 
 - Login/Signup
   - signin/SignUp form 
