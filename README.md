@@ -16,6 +16,7 @@
   - Made a constants files
   - Registered TMDB API & Created an API access token 
   - Get Data from TMDB API by making a call for now Playing movies 
+  - Created custom hook for nowPlaying Movies and TrailerVideos
 # Features 
 - Login/Signup
   - signin/SignUp form 
