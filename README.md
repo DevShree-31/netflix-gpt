@@ -17,6 +17,10 @@
   - Registered TMDB API & Created an API access token 
   - Get Data from TMDB API by making a call for now Playing movies 
   - Created custom hook for nowPlaying Movies and TrailerVideos
+  - Compeleted Secondary Container to display movieList
+  - Added popular movies in movies store
+  - Created a custom hook for popularMovies
+  - 
 # Features 
 - Login/Signup
   - signin/SignUp form 

@@ -8,3 +8,4 @@ headers: {
     Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4MTVhYWFiZGQyNDg0YjcyZTExYzE5YmM5ODM3YWE3ZSIsInN1YiI6IjY2MGIwMmE4MTVkZWEwMDE2MjMyZjdkZSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.BOkiSvu2dQCRWUHpkP0LD7bdudV-BQekmOhQeSWeyOc'
 }
 };
+export const IMG_CDN="https://image.tmdb.org/t/p/w300/"
