@@ -9,3 +9,4 @@ headers: {
 }
 };
 export const IMG_CDN="https://image.tmdb.org/t/p/w300/"
+export const GEMINI_KEY="AIzaSyDYUBZzl9CnzNo7-179eEdxQe28bQFEvYo"

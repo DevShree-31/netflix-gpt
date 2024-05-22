@@ -6,7 +6,7 @@ function GptSearch() {
   return (
     <div >
       <div className='absolute -z-10'>
-      <img src={BACK_IMG_URL}/>
+      <img src={BACK_IMG_URL} className='position fixed'/>
       </div>
       <GptSearchBar/>
       <GptMovieSuggestion/>
